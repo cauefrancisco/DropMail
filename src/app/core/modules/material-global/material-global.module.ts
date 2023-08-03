@@ -1,11 +1,32 @@
-import { NgModule } from '@angular/core';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
-import { MaterialGlobalComponent } from './material-global.component';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 
 @NgModule({
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ClipboardModule,
+    MatIconModule,
+    MatTooltipModule
   ],
-  declarations: [MaterialGlobalComponent]
+  exports: [
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    ClipboardModule,
+    MatIconModule,
+    MatTooltipModule
+  ]
 })
 export class MaterialGlobalModule { }

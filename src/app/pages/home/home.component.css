@@ -1,0 +1,14 @@
+main{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container-sec{
+  height: 100%;
+  width: 100%;
+}
