@@ -15,6 +15,7 @@ export class NewEmailComponent implements OnInit {
   public tokenId!: string;
   public mailId!: string;
   public copyTextTooltip: string = 'Copy';
+  public showDashboard = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -30,8 +31,8 @@ export class NewEmailComponent implements OnInit {
   public get F_email(): AbstractControl { return this.form.get('email') as AbstractControl }
 
   ngOnInit() {
-    console.log('makeId', this.generateTokenId(8));
-    this.tokenId = this.generateTokenId(12);
+    console.log('makeId', this._authService.generateTokenId(8));
+    this.tokenId = this._authService.generateTokenId(12);
     this.hasGeneratedEmail();
   }
 
@@ -44,17 +45,6 @@ export class NewEmailComponent implements OnInit {
 
   }
 
-  public generateTokenId(length: number): string {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-  }
 
   public createMail(): void {
     this._mailService.createDropMail(this.tokenId).subscribe((res: any) => {
@@ -64,13 +54,16 @@ export class NewEmailComponent implements OnInit {
       this.F_email.setValue(emailGenerated);
       this._authService.setId(this.mailId);
       this._authService.setTemporaryEmail(emailGenerated);
+      this._authService.setToken(this.tokenId);
       this.copyTextTooltip = 'Copy';
+      this._authService.showDashboard = true;
     })
   }
 
   public clearInput() {
     this._authService.clearStorage();
     this.form.reset();
+    this._authService.showDashboard = false;
   }
 
   public copyEmail() {

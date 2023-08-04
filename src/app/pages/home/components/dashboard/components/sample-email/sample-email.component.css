@@ -1,0 +1,22 @@
+.sample{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  text-align: start;
+  min-height: 10vh;
+  margin: 0 !important;
+  line-height: 2vh !important;
+  padding: 1.5vw;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.sample:hover{
+  background-color: lightgray;
+  color: black;
+}
+
+h4{
+  margin: 0 !important;
+}

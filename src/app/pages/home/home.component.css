@@ -12,3 +12,14 @@ main{
   height: 100%;
   width: 100%;
 }
+
+.sec-email{
+  text-align: center;
+  width: 100vw;
+
+}
+
+.sec-inbox{
+  text-align: center;
+  width: 100vw;
+}

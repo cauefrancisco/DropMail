@@ -1,3 +1,18 @@
-<p>
-  dashboard works!
-</p>
+<mat-card class="w-100">
+  <!-- <mat-card-content *ngIf="!showDashboard">No email generated</mat-card-content> -->
+
+  <!-- <div *ngIf="showDashboard" class="row container-inbox"> -->
+  <div class="row container-inbox">
+
+    <section class="col-xl-4 col-md-4 col-sm-4 col-12 preview-board me-2">
+      <div class="title">
+        <h2>Inbox</h2>
+      </div>
+      <app-sample-email class="col-12"></app-sample-email>
+    </section>
+    <section class="col-xl-8 col-md-8 col-sm-8 col-12 email-view">
+      <div class="header"> </div>
+    </section>
+  </div>
+
+</mat-card>
