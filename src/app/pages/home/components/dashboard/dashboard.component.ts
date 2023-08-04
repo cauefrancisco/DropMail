@@ -1,8 +1,10 @@
 import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
-import { timer } from 'rxjs';
+import { Subscription, interval } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MailService } from 'src/app/core/services/mail.service';
+import { FullEmailComponent } from './components/full-email/full-email.component';
 import { SampleEmailComponent } from './components/sample-email/sample-email.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -11,24 +13,33 @@ import { SampleEmailComponent } from './components/sample-email/sample-email.com
 })
 export class DashboardComponent implements OnInit, DoCheck {
   @ViewChild(SampleEmailComponent) sampleEmailComponent!: SampleEmailComponent;
+  @ViewChild(FullEmailComponent) fullEmailComponent!: FullEmailComponent;
+
+  public mySubscription: Subscription;
   public showDashboard!: boolean;
+  public emailData!: any;
   public mailId!: string;
-  public timer = timer(1500);
+  public showfullEmail = false;
+  public hasNoEmails = false;
+  timerProgress = interval(4500);
   constructor(
     private _authService: AuthService,
     private _mailService: MailService,
   ) {
+
+    this.mySubscription = interval(4500).subscribe(() => {
+      this.timerProgress;
+      this.getMails();
+    })
   }
 
   ngOnInit() {
     this.getMails();
+    this.mySubscription;
   }
 
   ngDoCheck() {
     this.showDashboard = this._authService.checkIfShowDashboard();
-    setTimeout(() => {
-      this.getMails();
-    }, 20000)
   }
 
   public getToken(): string {
@@ -41,16 +52,18 @@ export class DashboardComponent implements OnInit, DoCheck {
     if (this._authService.getTemporaryEmailId() !== null) {
       this._mailService.getMails(tokenId, mailId).subscribe((res: any) => {
         if (res.data.session.mails.length < 1) {
-          this.sampleEmailComponent.isEmpty = true;
+          this.hasNoEmails = true;
+          this.sampleEmailComponent.emailData = [];
           return;
         }
-        this.sampleEmailComponent.isEmpty = false;
         this.sampleEmailComponent.emailData = res.data.session.mails;
-        console.log('this.sampleEmailComponent.emailData = ', res.data.session.mails);
         console.log('emails recebidos', res);
       });
     }
   }
 
-
+  public recieveEmailClicked(event: any) {
+    this.emailData = event;
+    this.showfullEmail = true;
+  }
 }

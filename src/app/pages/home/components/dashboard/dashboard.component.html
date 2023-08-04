@@ -1,17 +1,28 @@
 <mat-card class="w-100">
-  <!-- <mat-card-content *ngIf="!showDashboard">No email generated</mat-card-content> -->
+  <mat-card-content *ngIf="!showDashboard">
+    <h4>No email generated</h4><br>
+    <p style="color: red;">Once you generate an email, the inbox will appear</p>
+  </mat-card-content>
 
-  <!-- <div *ngIf="showDashboard" class="row container-inbox"> -->
-  <div class="row container-inbox">
+  <div *ngIf="showDashboard" class="row container-inbox">
+
+    <div class="progress mb-5">
+
+    </div>
+
 
     <section class="col-xl-4 col-md-4 col-sm-4 col-12 preview-board me-2">
       <div class="title">
         <h2>Inbox</h2>
       </div>
-      <app-sample-email class="col-12"></app-sample-email>
+      <app-sample-email class="col-12"
+        (onSampleEmailClick)="recieveEmailClicked($event)"></app-sample-email>
     </section>
     <section class="col-xl-8 col-md-8 col-sm-8 col-12 email-view">
       <div class="header"> </div>
+      <app-full-email *ngIf="showfullEmail"
+        [fullEmailData]="emailData"></app-full-email>
+      <h2 *ngIf="!showfullEmail">{{hasNoEmails ? 'Nothing new here...' : 'Click to read :)'}}</h2>
     </section>
   </div>
 

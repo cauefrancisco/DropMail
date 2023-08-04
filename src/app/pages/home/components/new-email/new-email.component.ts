@@ -1,5 +1,5 @@
 import { Clipboard } from '@angular/cdk/clipboard';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MailService } from 'src/app/core/services/mail.service';
@@ -11,6 +11,7 @@ import { MailService } from 'src/app/core/services/mail.service';
   styleUrls: ['./new-email.component.css']
 })
 export class NewEmailComponent implements OnInit {
+  @Output() clear = new EventEmitter<any>
   public form: FormGroup;
   public tokenId!: string;
   public mailId!: string;
@@ -64,6 +65,7 @@ export class NewEmailComponent implements OnInit {
     this._authService.clearStorage();
     this.form.reset();
     this._authService.showDashboard = false;
+    this.clear.emit();
   }
 
   public copyEmail() {

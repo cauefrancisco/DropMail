@@ -1,7 +1,6 @@
-<!-- <main *ngIf="isEmpty" class="sample" style="background-color: red;"> -->
 <main>
-  <div *ngFor="let item of emailData" class="sample">
+  <section *ngFor="let item of emailData" class="sample" (click)="openFullPost(item)">
     <h4>{{item.headerSubject}}</h4>
-    <p>{{item.text}}</p>
-  </div>
+    <p>{{limitString(item.text)}}</p>
+  </section>
 </main>

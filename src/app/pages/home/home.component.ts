@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  public clear(): void {
+    this.dashboardComponent.emailData = [];
+  }
+
 }

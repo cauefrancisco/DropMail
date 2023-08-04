@@ -7,11 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialGlobalModule } from './core/modules/material-global/material-global.module';
+import { FullEmailComponent } from './pages/home/components/dashboard/components/full-email/full-email.component';
 import { SampleEmailComponent } from './pages/home/components/dashboard/components/sample-email/sample-email.component';
 import { DashboardComponent } from './pages/home/components/dashboard/dashboard.component';
 import { NewEmailComponent } from './pages/home/components/new-email/new-email.component';
 import { HomeComponent } from './pages/home/home.component';
-
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { HomeComponent } from './pages/home/home.component';
     HomeComponent,
     DashboardComponent,
     NewEmailComponent,
-    SampleEmailComponent
+    SampleEmailComponent,
+    FullEmailComponent
   ],
   imports: [
     BrowserModule,

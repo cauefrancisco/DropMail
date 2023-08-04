@@ -17,6 +17,11 @@
   color: black;
 }
 
+.sample-toggle{
+  background-color: lightgray;
+  color: black;
+}
+
 h4{
   margin: 0 !important;
 }
