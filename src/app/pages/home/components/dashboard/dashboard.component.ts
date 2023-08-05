@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MailService } from 'src/app/core/services/mail.service';
@@ -11,7 +11,7 @@ import { SampleEmailComponent } from './components/sample-email/sample-email.com
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, DoCheck {
+export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   @ViewChild(SampleEmailComponent) sampleEmailComponent!: SampleEmailComponent;
   @ViewChild(FullEmailComponent) fullEmailComponent!: FullEmailComponent;
 
@@ -40,6 +40,10 @@ export class DashboardComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.showDashboard = this._authService.checkIfShowDashboard();
+  }
+
+  ngOnDestroy() {
+    this.mySubscription.unsubscribe();
   }
 
   public getToken(): string {
