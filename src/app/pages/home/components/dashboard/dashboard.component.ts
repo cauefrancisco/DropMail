@@ -59,7 +59,6 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   public getMails(): void {
-    console.log('chamou');
     this.counter = 15;
     this.countdown();
     const mailId = this.getToken();
