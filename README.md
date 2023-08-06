@@ -32,7 +32,7 @@ Uma boa maneira de lidar com isso é usar um endereço de e-mail temporário se 
    - Angular Material: https://material.angular.io/
    - Bootstrap: https://getbootstrap.com/
 
-## Como instalar e usar o projeot
+## Como instalar e usar o projeto
 
 ...
 
