@@ -55,7 +55,6 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
         takeWhile(() => this.counter > 0),
         tap(() => this.counter--)
       ).subscribe(() => {
-        this.counter;
       });
   }
 
