@@ -23,18 +23,15 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   public hasNoEmails = false;
   public counter = 15;
   public timer: any;
-  timerProgress = interval(4500);
   constructor(
     private _authService: AuthService,
     private _mailService: MailService,
   ) {
 
     this.mySubscription = interval(15000).subscribe(() => {
-      this.timerProgress;
       this.getMails();
-      this.timer;
+      console.log('hello')
     })
-
     this.timer = timer(1000, 1000)
       .pipe(
         takeWhile(() => this.counter > 0),
