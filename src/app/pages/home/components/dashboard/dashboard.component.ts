@@ -73,7 +73,6 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
           return;
         }
         this.sampleEmailComponent.emailData = res.data.session.mails;
-        console.log('emails recebidos', res);
       });
     }
   }
