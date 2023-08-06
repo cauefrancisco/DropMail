@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewEmailComponent } from './components/new-email/new-email.component';
 
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   public tokenId!: string;
   public mailId!: string;
   public title: string = '';
+  public mySubscription!: Subscription;
 
   constructor(
   ) { }
@@ -23,6 +25,13 @@ export class HomeComponent implements OnInit {
 
   public clear(): void {
     this.dashboardComponent.emailData = [];
+    this.dashboardComponent.showDashboard = false;
+    this.dashboardComponent.mySubscription.unsubscribe();
+  }
+
+  public startToGetMails() {
+    this.dashboardComponent.getMails();
+    this.dashboardComponent.showDashboard = true;
   }
 
 }

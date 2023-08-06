@@ -12,6 +12,7 @@ import { MailService } from 'src/app/core/services/mail.service';
 })
 export class NewEmailComponent implements OnInit {
   @Output() clear = new EventEmitter<any>
+  @Output() generateEmail = new EventEmitter<any>
   public form: FormGroup;
   public tokenId!: string;
   public mailId!: string;
@@ -58,6 +59,7 @@ export class NewEmailComponent implements OnInit {
       this._authService.setToken(this.tokenId);
       this.copyTextTooltip = 'Copy';
       this._authService.showDashboard = true;
+      this.generateEmail.emit();
     })
   }
 
