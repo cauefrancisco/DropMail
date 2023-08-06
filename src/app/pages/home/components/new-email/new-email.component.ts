@@ -33,7 +33,6 @@ export class NewEmailComponent implements OnInit {
   public get F_email(): AbstractControl { return this.form.get('email') as AbstractControl }
 
   ngOnInit() {
-    console.log('makeId', this._authService.generateTokenId(8));
     this.tokenId = this._authService.generateTokenId(12);
     this.hasGeneratedEmail();
   }
@@ -50,7 +49,6 @@ export class NewEmailComponent implements OnInit {
 
   public createMail(): void {
     this._mailService.createDropMail(this.tokenId).subscribe((res: any) => {
-      console.log(res);
       const emailGenerated = res.data.introduceSession.addresses[0].address;
       this.mailId = res.data.introduceSession.id;
       this.F_email.setValue(emailGenerated);

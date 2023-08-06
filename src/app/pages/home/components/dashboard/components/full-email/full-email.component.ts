@@ -11,7 +11,6 @@ export class FullEmailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('fullEmailData', this.fullEmailData);
   }
 
 }
