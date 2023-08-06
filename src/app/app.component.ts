@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'dropmail';
 
   constructor(
-  ) {
+  ) { }
 
-  }
+
 }

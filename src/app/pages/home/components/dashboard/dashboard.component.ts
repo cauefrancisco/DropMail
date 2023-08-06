@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
+import { Subscription, interval, takeWhile, tap, timer } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MailService } from 'src/app/core/services/mail.service';
 import { FullEmailComponent } from './components/full-email/full-email.component';
@@ -21,16 +21,28 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   public mailId!: string;
   public showfullEmail = false;
   public hasNoEmails = false;
+  public counter = 15;
+  public timer: any;
   timerProgress = interval(4500);
   constructor(
     private _authService: AuthService,
     private _mailService: MailService,
   ) {
 
-    this.mySubscription = interval(4500).subscribe(() => {
+    this.mySubscription = interval(15000).subscribe(() => {
       this.timerProgress;
       this.getMails();
+      this.timer;
     })
+
+    this.timer = timer(1000, 1000)
+      .pipe(
+        takeWhile(() => this.counter > 0),
+        tap(() => this.counter--)
+      ).subscribe(() => {
+        this.counter;
+        this.counter === 0 ? this.counter = 15 : this.counter;
+      });
   }
 
   ngOnInit() {
@@ -55,7 +67,7 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
     const tokenId = this._authService.getToken();
     if (this._authService.getTemporaryEmailId() !== null) {
       this._mailService.getMails(tokenId, mailId).subscribe((res: any) => {
-        if (res.data.session.mails.length < 1) {
+        if (res.data?.session?.mails.length < 1) {
           this.hasNoEmails = true;
           this.sampleEmailComponent.emailData = [];
           return;
