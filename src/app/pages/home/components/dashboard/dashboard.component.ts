@@ -33,9 +33,6 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
 
   ngOnInit() {
     this.showDashboard = this._authService.checkIfShowDashboard();
-    if (this.showDashboard) {
-      this.getMails();
-    }
   }
   ngDoCheck() {
     this.showDashboard = this._authService.checkIfShowDashboard();
