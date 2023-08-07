@@ -34,6 +34,20 @@ Uma boa maneira de lidar com isso é usar um endereço de e-mail temporário se 
 
 ## Como instalar e usar o projeto
 
+#### Para instalar
+
+1- Dar um git Clone no projeto (https://github.com/cauefrancisco/DropMail);
+2- Abrir o projeto em algum editor de texto de sua preferência;
+3- Ter node.js instalado na máquina;
+4 - Instalar as dependências do projeto, com o comando **'npm i'**;
+5 - Após a instalação das dependências, rodar o projeto com o comando **'npm run start'**;
+6 - O Projeto abrirá localmente, em 'https://localhost:4000';
+
+#### Para usar
+
+![Alt text](image.png)
+1 - Gerar um novo e-mail. Após a geração do email, o inbox irá abrir, junto com um timer de 15 segundos, que sinaliza a atualização da requisição para chegada de novos email caso tenha algum.
+2 - Caso o usuário precisa limpar o email e gerar outro, clicar no botão 'Clear', depois em 'Generate email', e outro email será gerado, com outro inbox.
 ...
 
 > This is a challenge by [Coodesh](https://coodesh.com/)
