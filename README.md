@@ -45,7 +45,6 @@ Uma boa maneira de lidar com isso é usar um endereço de e-mail temporário se 
 
 #### Para usar
 
-![Alt text](image.png)
 1 - Gerar um novo e-mail. Após a geração do email, o inbox irá abrir, junto com um timer de 15 segundos, que sinaliza a atualização da requisição para chegada de novos email caso tenha algum.
 2 - Caso o usuário precisa limpar o email e gerar outro, clicar no botão 'Clear', depois em 'Generate email', e outro email será gerado, com outro inbox.
 ...
